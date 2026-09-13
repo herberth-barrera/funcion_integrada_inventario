@@ -1,5 +1,6 @@
 from inventario import registrarProducto, buscarProducto
 
+#Creamos una funcion para ejecutar los casos de prueba iniciales
 def ejecutar_pruebas_iniciales(inventario):
     print("--- EJECUTANDO CASOS DE PRUEBA DE INICIALIZACIÓN ---")
     inventario = registrarProducto("Soda Pepsi 600ml", 1.25, 12, inventario)
@@ -8,7 +9,7 @@ def ejecutar_pruebas_iniciales(inventario):
     print("Casos de prueba registrados exitosamente.\n")
     return inventario
 
-
+#El usuario puede ver el menu de opciones
 def mostrar_menu():
     print("   SISTEMA DE INVENTARIO - TIENDA   ")
     print(" ")
@@ -18,7 +19,7 @@ def mostrar_menu():
     print("4. Salir")
     print(" ")
 
-
+#La función principal del programa
 def main():
     inventario = []
     inventario = ejecutar_pruebas_iniciales(inventario)
@@ -72,6 +73,6 @@ def main():
         else:
             print("\nOpción inválida. Intente de nuevo.\n")
 
-
+#Aqui llamamos a la función principal para iniciar el programa
 if __name__ == "__main__":
     main()
