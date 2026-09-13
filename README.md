@@ -25,13 +25,9 @@ Un sistema modular desarrollado en **Python 3** orientado al control y gestión 
 ├── inventario.py    # Módulo lógico con las funciones propias del sistema
 ├── main.py          # Programa principal e interfaz de usuario en consola
 └── README.md        # Documentación general y guía de ejecución
-'''
----
 
 ## Cómo ejecutarlo
 python main.py
-
----
 
 ##Funciones de inventario.py
 calcularTotal(precio, cantidad) → retorna el total (float)
@@ -40,14 +36,8 @@ registrarProducto(nombre, precio, cantidad, inventario) → retorna el inventari
 buscarProducto(nombre_buscar, inventario) → retorna el producto con nombre coincidente/None
 editarProducto(nombre, inventario) → busca el producto con el nombre ingresado con la función buscarProducto() y le pregunta al usuario que cambios desea hacer y retorna el producto actualizado; sino lo encuentra, retorna Nulo
 
----
-
 ## Equipo – parte de código desarrollada por cada integrante
 - Herberth Otoniel Barrera Bonilla – implementó buscarProducto() en inventario.py, redactó la primera parte de README y creó el directorio de github
 - Camila Alejandra Herrera Pleitez – implementó calcularTotal(), validarStock() y registrar Producto() en inventario.py
-- Andrés Romero Weil – implementó main.py y las pruebas con distintos casos de datos y arreglo la syntaxys del README
+- Andrés Romero Weil – implementó main.py y las pruebas con distintos casos de datos
 - Héctor Antonio Calderón Meléndez – implementó editarProducto en inventario.py y redactó la segunda parte de README desde el apartado "Cómo ejecutarlo"
-
-
-
-

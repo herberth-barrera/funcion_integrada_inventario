@@ -1,26 +1,26 @@
 #Aqui llamamos las variables del inventario.py 
 from inventario import registrarProducto, buscarProducto
 
+#Creamos una funcion para ejecutar los casos de prueba iniciales
 def ejecutar_pruebas_iniciales(inventario):
     print("--- EJECUTANDO CASOS DE PRUEBA DE INICIALIZACIÓN ---")
     inventario = registrarProducto("Soda Pepsi 600ml", 1.25, 12, inventario)
     inventario = registrarProducto("Aceite Motor 20W50", 6.50, 2, inventario)
     inventario = registrarProducto("Agua Embotellada 1L", 0.75, 25, inventario)
-    print("✓ Casos de prueba registrados exitosamente.\n")
+    print("Casos de prueba registrados exitosamente.\n")
     return inventario
 
-
+#El usuario puede ver el menu de opciones
 def mostrar_menu():
-    print("========================================")
-    print("   SISTEMA DE INVENTARIO - TIENDA      ")
-    print("========================================")
+    print("   SISTEMA DE INVENTARIO - TIENDA   ")
+    print(" ")
     print("1. Registrar nuevo producto")
     print("2. Ver todos los productos")
     print("3. Buscar un producto por nombre")
     print("4. Salir")
-    print("----------------------------------------")
+    print(" ")
 
-
+#La función principal del programa
 def main():
     inventario = []
     inventario = ejecutar_pruebas_iniciales(inventario)
@@ -74,6 +74,6 @@ def main():
         else:
             print("\nOpción inválida. Intente de nuevo.\n")
 
-
+#Aqui llamamos a la función principal para iniciar el programa
 if __name__ == "__main__":
     main()
