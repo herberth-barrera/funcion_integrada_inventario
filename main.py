@@ -1,3 +1,4 @@
+#Aqui llamamos las variables del inventario.py 
 from inventario import registrarProducto, buscarProducto
 
 def ejecutar_pruebas_iniciales(inventario):
