@@ -1,26 +1,22 @@
 def calcularTotal(precio, cantidad):
-    return precio * cantidad
+    subtotal = precio * cantidad
+    return subtotal
 
-
-def validarStock(cantidad, umbral=5):
-    return cantidad < umbral
-
+def validarStock(cantidad, unbral=5):
+    return cantidad >= unbral
 
 def registrarProducto(nombre, precio, cantidad, inventario):
-    total_inversion = calcularTotal(precio, cantidad)
-    alerta_stock = validarStock(cantidad)
-    
+    total = calcularTotal(precio, cantidad)
+    stock_bajo = validarStock(cantidad)
     producto = {
         "nombre": nombre,
         "precio": precio,
         "cantidad": cantidad,
-        "total": total_inversion,
-        "stock_bajo": alerta_stock
+        "total": total,
+        "stock_bajo": stock_bajo
     }
-    
     inventario.append(producto)
     return inventario
-
 
 def buscarProducto(nombre_buscar, inventario):
     for p in inventario:
