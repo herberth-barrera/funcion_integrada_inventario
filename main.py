@@ -5,19 +5,18 @@ def ejecutar_pruebas_iniciales(inventario):
     inventario = registrarProducto("Soda Pepsi 600ml", 1.25, 12, inventario)
     inventario = registrarProducto("Aceite Motor 20W50", 6.50, 2, inventario)
     inventario = registrarProducto("Agua Embotellada 1L", 0.75, 25, inventario)
-    print("✓ Casos de prueba registrados exitosamente.\n")
+    print("Casos de prueba registrados exitosamente.\n")
     return inventario
 
 
 def mostrar_menu():
-    print("========================================")
-    print("   SISTEMA DE INVENTARIO - TIENDA      ")
-    print("========================================")
+    print("   SISTEMA DE INVENTARIO - TIENDA   ")
+    print(" ")
     print("1. Registrar nuevo producto")
     print("2. Ver todos los productos")
     print("3. Buscar un producto por nombre")
     print("4. Salir")
-    print("----------------------------------------")
+    print(" ")
 
 
 def main():

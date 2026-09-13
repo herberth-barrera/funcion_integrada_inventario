@@ -25,3 +25,12 @@ Un sistema modular desarrollado en **Python 3** orientado al control y gestión 
 ├── inventario.py    # Módulo lógico con las funciones propias del sistema
 ├── main.py          # Programa principal e interfaz de usuario en consola
 └── README.md        # Documentación general y guía de ejecución
+
+
+---
+
+Integrantes del grupo y responsabilidad:
+Herberth Barrera: Codigo main.py
+Hector Calderon: inventario.py
+Camila Herrera: inventario.py
+Andres Romero: Readme.md
