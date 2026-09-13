@@ -2,13 +2,13 @@ def calcularTotal(precio, cantidad):
     return precio * cantidad
 
 
-def validarStock(cantidad, umbral=5):
-    return cantidad < umbral
+def validarStock(cantidad, existente=5):
+    return cantidad < existente
 
 
 def registrarProducto(nombre, precio, cantidad, inventario):
     total_inversion = calcularTotal(precio, cantidad)
-    alerta_stock = validarStock(cantidad)
+    alerta_stock = validarStock(cantidad, existente=5)
     
     producto = {
         "nombre": nombre,
