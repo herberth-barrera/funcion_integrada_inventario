@@ -1,65 +1,94 @@
+# inventario.py
+# Funciones propias del sistema de inventario.
+# Cada función hace UNA sola tarea, recibe parámetros y retorna un valor.
+# Se conectan entre sí: unas usan el resultado de otras.
+
+
 def calcularTotal(precio, cantidad):
+    """
+    Calcula el valor total de un producto.
+    Parámetros:
+        precio (float): precio unitario del producto
+        cantidad (int): cantidad disponible o vendida
+    Retorna:
+        float: precio * cantidad
+    """
     return precio * cantidad
 
 
-def validarStock(cantidad, existente=5):
-    return cantidad < existente
+def validarStock(cantidad, umbral=5):
+    """
+    Determina si el stock de un producto está bajo.
+    Parámetros:
+        cantidad (int): cantidad actual del producto
+        umbral (int): cantidad mínima aceptable (por defecto 5)
+    Retorna:
+        bool: True si el stock está bajo, False si está bien
+    """
+    return cantidad < umbral
 
-
-def validarStock(cantidad, unbral=5):
-    return cantidad >= unbral
 
 def registrarProducto(nombre, precio, cantidad, inventario):
+    """
+    Registra un nuevo producto en el inventario.
+    Usa calcularTotal() y validarStock() internamente.
+    Parámetros:
+        nombre (str): nombre del producto
+        precio (float): precio unitario
+        cantidad (int): cantidad disponible
+        inventario (list): lista donde se guardan los productos
+    Retorna:
+        list: el inventario actualizado con el nuevo producto
+    """
     total = calcularTotal(precio, cantidad)
-    stock_bajo = validarStock(cantidad, existente=5)
+    stock_bajo = validarStock(cantidad)
 
     producto = {
         "nombre": nombre,
         "precio": precio,
         "cantidad": cantidad,
         "total": total,
-        "stock_bajo": stock_bajo
+        "stock_bajo": stock_bajo,
     }
+
     inventario.append(producto)
     return inventario
 
-def buscarProducto(nombre_buscar, inventario):
-    for p in inventario:
-        if p["nombre"].lower() == nombre_buscar.lower():
-            return p
-    print(f'No existe un producto con ese nombre')
+
+def buscarProducto(nombre, inventario):
+    """
+    Busca un producto por nombre dentro del inventario.
+    Parámetros:
+        nombre (str): nombre a buscar (no distingue mayúsculas/minúsculas)
+        inventario (list): lista de productos
+    Retorna:
+        dict o None: el producto encontrado, o None si no existe
+    """
+    for producto in inventario:
+        if producto["nombre"].lower() == nombre.lower():
+            return producto
     return None
 
-def editarProducto(nombre, inventario):
-    #Aprovechamos la funcion "buscarProducto" para
-    #encontrar al producto que queremos editar
-    producto =  buscarProducto(nombre, inventario)
-    if producto != None:
-        print(f'Si no quiere cambiar cierta caracteristica, presione solamente enter')
 
-        nuevoNombre= input(f"Ingrese nuevo nombre (actual: {producto.get('nombre',0)}):")
-        nuevoPrecio= input(f"Ingrese nuevo precio (actual: {producto.get('precio',0)}):")
-        nuevaCantidad= input(f"Ingrese nueva cantidad (actual: {producto.get('cantidad',0)}):")
+def generarReporte(inventario):
+    """
+    Genera un resumen general del inventario: valor total y
+    lista de productos con stock bajo.
+    Parámetros:
+        inventario (list): lista de productos
+    Retorna:
+        dict: {"valor_total": float, "productos_bajo_stock": list}
+    """
+    valor_total = 0
+    productos_bajo_stock = []
 
-        #Con el primer mensaje dejamos claro que si
-        #el usuario no quiere cambiar un parametro que
-        #enviara un mensaje vacio.
-        #Evaluamos si la variable no esta vacia para
-        #hacer el cambio debido.
-        if nuevoNombre != "":
-            producto["nombre"] = str(nuevoNombre)
-        if nuevoPrecio != "":
-            producto["precio"] = float(nuevoPrecio)
-        if nuevaCantidad != "":
-            producto["cantidad"] = int(nuevaCantidad)
+    for producto in inventario:
+        valor_total += producto["total"]
+        if producto["stock_bajo"]:
+            productos_bajo_stock.append(producto["nombre"])
 
-        #Actualizamos el total y el stock bajo del producto
-        producto["total"] = calcularTotal(producto["precio"], producto["cantidad"])
-        producto["stock_bajo"] = validarStock(producto["cantidad"])
-
-        #Comunicamos que se termino el cambio
-        print("se actualizo el producto")
-        #No tenemos que avisar en caso que no exista
-        #el producto, en tal caso la funcion buscarProducto
-        #avisa antes y no se ejecutaria el primer
-        #if de esta funcion.
+    reporte = {
+        "valor_total": valor_total,
+        "productos_bajo_stock": productos_bajo_stock,
+    }
+    return reporte
